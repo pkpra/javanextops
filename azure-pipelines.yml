@@ -32,10 +32,10 @@ steps:
 - task: SonarQubeAnalyze@5
 - task: SonarQubePublish@5
   inputs:
-    pollingTimeoutSec: '300'
+    pollingTimeoutSec: '1000'
 - task: CopyFiles@2
   inputs:
-    SourceFolder: '$(Build.SourcesDirectory)'
+    SourceFolder: '$(Build.SourceDirectory)'
     Contents: |
       **/target/*.war
       *.sql
