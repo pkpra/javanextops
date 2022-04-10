@@ -20,16 +20,13 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
-    
-# Prepare Analysis Configuration task
-- task: SonarQubePrepare@4
+- task: SonarQubePrepare@5
   inputs:
-    SonarQube: 'YourSonarqubeServerEndpoint'
-    scannerMode: 'sonar'
-    extraProperties: 'sonar.projectKey=YourProjectKey'
-
-# Publish Quality Gate Result task
-- task: SonarQubePublish@4
+    SonarQube: 'sonar'
+    scannerMode: 'Other'
+    extraProperties: 
+- task: SonarQubeAnalyze@5
+- task: SonarQubePublish@5
   inputs:
     pollingTimeoutSec: '300'
 - task: CopyFiles@2
