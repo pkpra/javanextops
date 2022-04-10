@@ -19,6 +19,7 @@ steps:
       # Put one key=value per line, example:
       # sonar.exclusions=**/*.bin
       sonar.projectKey=java_java
+- task: SonarQubeAnalyze@5
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
@@ -29,7 +30,6 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
-- task: SonarQubeAnalyze@5
 - task: CopyFiles@2
   inputs:
     SourceFolder: '$(Build.SourcesDirectory)'
